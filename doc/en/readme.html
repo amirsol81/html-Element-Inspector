@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>HTML Element Inspector</title>
+<style>
+body{font-family:Arial, sans-serif; line-height:1.5; margin:1.6em; max-width:55em;}
+h1,h2{color:#2c3e50;}
+code{background:#f4f4f4; padding:0 0.25em;}
+ul{margin-top:0.4em;}
+</style>
+</head>
+<body>
+
+<h1>HTML Element Inspector</h1>
+
+<p><strong>Author:</strong> Amir Soleimani<br>
+<strong>NVDA compatibility:</strong> 2026.1 and later</p>
+
+<p>
+HTML Element Inspector is a small inspection tool inspired by the “Element Information” feature in JAWS.
+It produces a compact, semantic report for the currently focused web element.
+</p>
+
+<h2>Shortcuts</h2>
+<ul>
+  <li><strong>NVDA + Shift + F1</strong> — Inspect the focused element.</li>
+  <li><strong>Control + NVDA + Shift + F1</strong> — Advanced inspector report (includes child element exploration with heading navigation).</li>
+</ul>
+
+<h2>Version 1.1.0</h2>
+<ul>
+  <li>Added an Advanced inspector report (Control + NVDA + Shift + F1) with focused element details, landmark context, and optional child element exploration.</li>
+  <li>Both Basic and Advanced reports support heading navigation (H / Shift+H) for faster structural review.</li>
+  <li>Improved accessible name reporting with conservative source hints and added <code>explicit-name-from</code> when <code>explicit-name=true</code>, without guessing ARIA sources.</li>
+  <li>Cleaner output by suppressing empty properties and reducing noise in ancestor elements.</li>
+</ul>
+
+<h2>Version 1.1.1</h2>
+<ul>
+  <li>Improved link reporting for anchor elements: when the link target is exposed as a URL value and no explicit href attribute is available, the report now shows it as <code>href=...</code> (conservative mapping for <code>tag=a</code>).</li>
+  <li>Enhanced Advanced report navigation: each <code>Tag X has Y parameters</code> block inside the Focused element section is now rendered as a level 3 heading for fast H / Shift+H navigation between tag blocks.</li>
+</ul>
+
+<h2>Requirements</h2>
+<ul>
+  <li>Use it on web content while NVDA is in <strong>Browse mode</strong> (Virtual Buffer).</li>
+  <li>This add-on <strong>does not copy anything to the clipboard</strong>; it only shows a report.</li>
+</ul>
+
+<h2>Browser testing</h2>
+<p>
+This add-on has been tested primarily with NVDA + Google Chrome. Firefox compatibility has not yet been fully verified.
+</p>
+
+<h2>What the report is built from</h2>
+<ul>
+  <li>NVDA object model (role, states, name/value/description when available)</li>
+  <li>IA2 / Web attributes (tag, role/xml-roles, aria relationships, setsize/posinset, etc.)</li>
+  <li>A short ancestor chain to provide context</li>
+</ul>
+
+<h2>Philosophy</h2>
+<ul>
+  <li><strong>Semantic first:</strong> prefer meaningful attributes over raw noise.</li>
+  <li><strong>Conservative:</strong> avoid unsafe guessing (e.g. tabindex is only reported when explicitly exposed, except for <code>role="tab"</code> where it helps debugging roving tabindex patterns).</li>
+  <li><strong>Readable:</strong> stable formatting that is easy to compare with other tools.</li>
+</ul>
+
+<h2>Feedback and contributions</h2>
+<p>
+Feedback and contributions to improve this add-on are welcome.
+</p>
+
+</body>
+</html>
+
+
